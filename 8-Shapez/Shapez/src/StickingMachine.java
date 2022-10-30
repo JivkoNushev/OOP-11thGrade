@@ -9,32 +9,42 @@ public class StickingMachine extends ComplexMachine{
     public void print_work(Figure f)
     {
         ArrayList<Segment> segm = f.getSegments();
+        System.out.println("\n\nJoining...\n");
         int count = 0;
-        for(Segment s : segm)
-        {
-            if(s.getColor().equalsIgnoreCase("RED"))
-                System.out.print(Color.RED);
-            else if (s.getColor().equalsIgnoreCase("YELLOW")) {
-                System.out.print(Color.YELLOW);
-            }
-            else if (s.getColor().equalsIgnoreCase("BLUE")) {
-                System.out.print(Color.BLUE);
-            }
-            else if (s.getColor().equalsIgnoreCase("GREEN")) {
-                System.out.print(Color.GREEN);
-            }
-            else{
+        for (int j = 0; j < 4; j++) {
+            Segment s = segm.get(j);
+            String c = "";
+
+            if (s == null) {
                 System.out.print(Color.WHITE);
+                c = "";
+                for (int k = 0; k < 6; k++) {
+                    c += "/";
+                }
             }
-
-            System.out.print(s.getColor());
-
-            System.out.print(Color.RESET);
+            else if(s.color.equalsIgnoreCase("RED")){
+                System.out.print(Color.RED);
+                c = " RED  ";
+            }
+            else if (s.color.equalsIgnoreCase("YELLOW")) {
+                System.out.print(Color.YELLOW);
+                c = "YELLOW";
+            }
+            else if (s.color.equalsIgnoreCase("BLUE")) {
+                System.out.print(Color.BLUE);
+                c = " BLUE ";
+            }
+            else if (s.color.equalsIgnoreCase("GREEN")) {
+                System.out.print(Color.GREEN);
+                c = "GREEN ";
+            }
+            System.out.print("|" + c + "|");
             count++;
 
             if (count == 2) {
                 System.out.println();
             }
+            System.out.print(Color.RESET);
         }
     }
 
@@ -60,13 +70,13 @@ public class StickingMachine extends ComplexMachine{
     {
         print_work(f1);
         print_work(f2);
-        System.out.println("Joining...");
 
         for (int i = 0; i < 4; i++) {
-            if (f2.getSegments().get(i).getColor() == null) {
+            if (f2.getSegments().get(i) == null) {
                 f2.getSegments().set(i, f1.getSegments().get(i));
             }
         }
+
         print_work(f2);
 
         return f2;

@@ -12,7 +12,7 @@ public class Figure {
         this.segments = segments;
     }
     public Figure(Figure other) {
-        this.segments = other.segments;
+        this.segments = (ArrayList<Segment>) other.segments.clone();
     }
     public ArrayList<Segment> getSegments() {
         return segments;
