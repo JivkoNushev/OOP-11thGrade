@@ -4,6 +4,14 @@ public class SplitMachine extends ComplexMachine{
 
     private boolean isSplittingHorizontal = false;
 
+    public boolean isSplittingHorizontal() {
+        return isSplittingHorizontal;
+    }
+
+    public void setSplittingHorizontal(boolean splittingHorizontal) {
+        isSplittingHorizontal = splittingHorizontal;
+    }
+
     public SplitMachine(boolean isSplittingHorizontal) {
         this.isSplittingHorizontal = isSplittingHorizontal;
     }
@@ -85,10 +93,10 @@ public class SplitMachine extends ComplexMachine{
             split = "Vertical";
 
             first_f.getSegments().set(1, null);
-            first_f.getSegments().set(2, null);
+            first_f.getSegments().set(3, null);
 
             second_f.getSegments().set(0, null);
-            second_f.getSegments().set(3, null);
+            second_f.getSegments().set(2, null);
         }
 
         System.out.println("\n\nSplitting " + split + "...");

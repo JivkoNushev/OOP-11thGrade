@@ -12,32 +12,42 @@ public class RotateMachine extends ComplexMachine {
     public void print_work(Figure f)
     {
         ArrayList<Segment> segm = f.getSegments();
+        System.out.println("\n\nRotating...\n");
         int count = 0;
-        for(Segment s : segm)
-        {
-            if(s.getColor().equalsIgnoreCase("RED"))
-                System.out.print(Color.RED);
-            else if (s.getColor().equalsIgnoreCase("YELLOW")) {
-                System.out.print(Color.YELLOW);
-            }
-            else if (s.getColor().equalsIgnoreCase("BLUE")) {
-                System.out.print(Color.BLUE);
-            }
-            else if (s.getColor().equalsIgnoreCase("GREEN")) {
-                System.out.print(Color.GREEN);
-            }
-            else{
+        for (int j = 0; j < 4; j++) {
+            Segment s = segm.get(j);
+            String c = "";
+
+            if (s == null) {
                 System.out.print(Color.WHITE);
+                c = "";
+                for (int k = 0; k < 6; k++) {
+                    c += "/";
+                }
             }
-
-            System.out.print(s.getColor());
-
-            System.out.print(Color.RESET);
+            else if(s.color.equalsIgnoreCase("RED")){
+                System.out.print(Color.RED);
+                c = " RED  ";
+            }
+            else if (s.color.equalsIgnoreCase("YELLOW")) {
+                System.out.print(Color.YELLOW);
+                c = "YELLOW";
+            }
+            else if (s.color.equalsIgnoreCase("BLUE")) {
+                System.out.print(Color.BLUE);
+                c = " BLUE ";
+            }
+            else if (s.color.equalsIgnoreCase("GREEN")) {
+                System.out.print(Color.GREEN);
+                c = "GREEN ";
+            }
+            System.out.print("|" + c + "|");
             count++;
 
             if (count == 2) {
                 System.out.println();
             }
+            System.out.print(Color.RESET);
         }
     }
 
@@ -68,7 +78,7 @@ public class RotateMachine extends ComplexMachine {
             rotation = "Left";
             f.rotateLeft();
         }
-        System.out.println("Rotating " + rotation + "...");
+        System.out.println("\n\nRotating " + rotation + "...");
 
         print_work(f);
     }

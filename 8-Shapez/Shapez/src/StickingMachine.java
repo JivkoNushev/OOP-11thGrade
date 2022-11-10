@@ -1,10 +1,14 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class StickingMachine extends ComplexMachine{
 
-    private Queue<Figure> stickedFigures;
+    private final Queue<Figure> stickedFigures;
 
+    public StickingMachine() {
+        this.stickedFigures = new LinkedList<Figure>();
+    }
     @Override
     public void print_work(Figure f)
     {
@@ -55,7 +59,6 @@ public class StickingMachine extends ComplexMachine{
                 throw new Exception("Couldn't add figure to SplitMachine");
         } else {
             Figure new_figure = join(figures.remove(), figure);
-
             if(!stickedFigures.add(new_figure))
                 throw new Exception("Couldn't add figure to StickingMachine");
         }
@@ -66,7 +69,7 @@ public class StickingMachine extends ComplexMachine{
         return stickedFigures.remove();
     }
 
-    public Figure join(Figure f1, Figure f2)
+    private Figure join(Figure f1, Figure f2)
     {
         print_work(f1);
         print_work(f2);
