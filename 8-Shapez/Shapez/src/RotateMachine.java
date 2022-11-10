@@ -62,12 +62,10 @@ public class RotateMachine extends ComplexMachine {
         String rotation;
         if (isRotationRight) {
             rotation = "Right";
-
             f.rotateRight();
         }
         else{
             rotation = "Left";
-
             f.rotateLeft();
         }
         System.out.println("Rotating " + rotation + "...");

@@ -100,9 +100,4 @@ public class SplitMachine extends ComplexMachine{
 
         return new Figure[]{first_f, second_f};
     }
-
-//    public Figure[] pull() {
-//        return new Figure[] {this.pull(), this.pull()}
-//    }
-
 }
